@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>good good study,day day up</title>
+    <link rel="stylesheet" href="../res/bootstrap.css">
+    <!--<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>-->
+    <script src="../res/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<script src="../res/js/common.js"></script>
+<div class="container">
+    <table id="tt" class="table table-hover" style="margin-top: 50px">
+        <tr>
+            <td>货币对</td>
+            <td>源ask</td>
+            <td>mt4_ask</td>
+            <td>源bid</td>
+            <td>mt4_bid</td>
+            <td>ask相差</td>
+            <td>bid相差</td>
+            <td>对冲买</td>
+            <td>对冲卖</td>
+            <td>变化时间</td>
+        </tr>
+    </table>
+</div>
+<hr/>
+<div class="container">源数据对接时间<span id="sourceD" class="bg-success"></span></span>
+    <a class="pull-right" target="_blank" href="../my/stop" style="margin-left: 15px">stop</a>
+
+    <a class="pull-right" target="_blank" href="../my/start" style="margin-left: 15px">start</a>
+    <a class="pull-right" target="_blank" href="../html/ccc.html" style="margin-left: 15px">配置</a>
+
+
+</div>
+<div class="container" id="session"></div>
+<!--log-->
+<hr/>
+<div class="container">
+    <table class="table table-hover" id="tickets">
+        <tr>
+
+            <td>时间</td>
+            <td>ticket</td>
+            <td>货币</td>
+            <td>方向</td>
+            <td>操作价格</td>
+            <td>实际价格</td>
+            <td>预期</td>
+            <td>源间隔</td>
+            <td>mt4间隔</td>
+            <td>操作</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
