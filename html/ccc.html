@@ -1,4 +1,5 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>我们一起来做分析吧</title>
@@ -12,6 +13,7 @@
 <script src="../res/js/ep.js"></script>
 <div class="jumbotron container">
     <p>注意事项:</p>
+
     <p>修改基础参数和主动做亏参数，都需要重启程序</p>
 
     <p>修改其他参数，程序会在1分钟内把新的参数自动注入</p>
@@ -19,6 +21,36 @@
     <p>严格按照参数的格式，如果需要整数，不要写小数</p>
 
     <p>所有的字符都应该在半角状态下输入</p>
+</div>
+<div class="container">
+    <form class="form-inline" id="saveConfForm">
+        <div class="form-group">
+            <label>对接码</label>
+            <input type="text" class="form-control" name="username"  maxlength="20">
+        </div>
+        <div class="form-group">
+            <label>名称</label>
+            <input type="text" class="form-control" name="code" required="required" maxlength="20">
+        </div>
+        <button type="submit" class="btn btn-default">保存当前配置</button>
+    </form>
+</div>
+<hr/>
+<div class="container">
+    <form class="form-inline" id="getConfForm">
+        <div class="form-group">
+            <label>源对接码</label>
+            <input type="text" class="form-control" name="username">
+        </div>
+        <button type="submit" class="btn btn-default">获取已保存配置</button>
+    </form>
+    <hr/>
+    <form class="form-inline" id="openConfForm">
+        <div class="form-group">
+            <select class="form-control"></select>
+        </div>
+        <button type="submit" class="btn btn-default">打开查看配置（和当前不一样的会标红提示)</button>
+    </form>
 </div>
 <div class="container">
     <table id="tt" class="table table-hover table-bordered" style="margin-top: 50px">
