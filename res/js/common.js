@@ -1,10 +1,12 @@
 $(document).ready(function () {
     reload();
-    setInterval(reload, 3000);
+    setInterval(reload, 5000);
     checkInfo();
     setInterval(checkInfo, 30000);
     getTickets();
-    setInterval(getTickets, 10000);
+    setInterval(getTickets, 100000);//100秒
+    //
+    bindTickDetail();
 });
 function reload() {
     $.getJSON("../my/sc", function (result) {
@@ -37,7 +39,7 @@ function checkInfo() {
         //时间
         $("#sourceD").html(result.initTime);
         //session
-        var t='';
+        var t = '';
         //if (result.session) {
         //    t = 'session alive';
         //} else {
@@ -65,18 +67,18 @@ function getTickets() {
             s += '<td>' + item.bestProfit.toFixed(1) + '</td>';
             s += '<td>' + item.sourceSpace + '</td>';
             s += '<td>' + item.mt4Space + '</td>';
-            s += '<td><button onclick="getLogs(\''+item.xh+'\')">详细</button></button></td>';
+            s += '<td><button onclick="getLogs(\'' + item.xh + '\')">详细</button></button></td>';
             s += '</tr>';
             $("#tickets").append(s);
         });
     });
 }
 function getLogs(xh) {
-    $.getJSON("../my/getJustLogs?id="+xh, function (result) {
-         var s='';
-        if(result.length==0) {
+    $.getJSON("../my/getJustLogs?id=" + xh, function (result) {
+        var s = '';
+        if (result.length == 0) {
             s = "没有记录";
-        }else{
+        } else {
             $.each(result, function (i, item) {
                 s += item.content + "\n";
             });
@@ -85,11 +87,16 @@ function getLogs(xh) {
     });
 }
 
-//更新gold to cny
-//var s = '<tr>';
-//s += '<td>' + '</td>';
-//s += '<td>' + '人民币黄金' + '</td>';
-//s += '<td>' + Math.round(b1 * a1 / 31.1035 * 1000) / 1000 + '</td>';
-//s += '<td>' + Math.round(b2 * a2 / 31.1035 * 1000) / 1000 + '</td>';
-//s += '<td>' + '</td>';
-//s += '</tr>';
+//tr点击
+function bindTickDetail() {
+    $("#tickets tbody").on("click", "tr", function () {
+        if (!$(this).find("td").hasClass("orderDetail") && !$(this).next().find("td").hasClass('orderDetail')) {
+            var tmp = $(this);
+            $.getJSON("../my/getOrderInfo?id=" + $(this).find("td:eq(1)").text(), function (r) {
+                var s = '<tr><td colspan="100" class="orderDetail">' + r + '</td></tr>';
+                tmp.after(s);
+
+            })
+        }
+    });
+}
