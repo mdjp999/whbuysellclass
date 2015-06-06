@@ -1,6 +1,5 @@
 $(document).ready(function () {
     load();
-
 });
 function load() {
     $.getJSON("../f/allConf", function (r) {
@@ -101,7 +100,7 @@ function load() {
                 if ($("#ccccc" + n).val() != v) {
                     $("#ccccc" + n).parent().parent().addClass("danger");
                     var tmp = $("#ccccc" + n).parent().parent().find("td:eq(1)");
-                    tmp.html(tmp.text()+'<h4 class="oldValue">'+v+'</h4>');
+                    tmp.html(tmp.text() + '<h4 class="oldValue">' + v + '</h4>');
                 }
             }
         });
